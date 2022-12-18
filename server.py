@@ -664,6 +664,7 @@ def edit_defence(id):
         return render_template("defence/edit_defence.html", form=form)
 
     if request.method == "POST":
+        form = DefenceForm(request.form)
         team_name = form.team_name.data
         saves_made = form.saves_made.data
         blocks = form.blocks.data
@@ -714,7 +715,7 @@ def add_discipline():
     if request.method == "POST" and form.validate(): 
         team_name = form.team_name.data
         matches = form.matches.data
-        fouls_win = form.fouls_win.data
+        fouls_won = form.fouls_won.data
         fouls_conceded = form.fouls_conceded.data
         yellow_cards = form.yellow_cards.data
         red_cards = form.red_cards.data
@@ -725,7 +726,7 @@ def add_discipline():
             cursor=con.cursor()
             query = "INSERT INTO DISCIPLINE (team,matches,foulsWin,foulsConceded,yellowCards,redCards) VALUES (?,?,?,?,?,?)"
             cursor.execute("PRAGMA foreign_keys = ON")
-            cursor.execute(query,(team_name,matches,fouls_win,fouls_conceded,yellow_cards,red_cards))
+            cursor.execute(query,(team_name,matches,fouls_won,fouls_conceded,yellow_cards,red_cards))
             con.commit()  
 
             cursor.close() 
@@ -770,7 +771,7 @@ def edit_discipline(id):
 
             form.team_name.data = team["team"]
             form.matches.data = team["matches"]
-            form.fouls_win.data = team["foulsWin"]
+            form.fouls_won.data = team["foulsWin"]
             form.fouls_conceded.data = team["foulsConceded"]
             form.yellow_cards.data = team["yellowCards"]
             form.red_cards.data = team["redCards"]
@@ -781,7 +782,7 @@ def edit_discipline(id):
         form = DisciplineForm(request.form)
         team_name = form.team_name.data
         matches = form.matches.data
-        fouls_win = form.fouls_win.data
+        fouls_won = form.fouls_won.data
         fouls_conceded = form.fouls_conceded.data
         yellow_cards = form.yellow_cards.data
         red_cards = form.red_cards.data
@@ -793,7 +794,7 @@ def edit_discipline(id):
             cur=con.cursor()
             cur.execute("PRAGMA foreign_keys = ON")
             query = "UPDATE DISCIPLINE SET team = ?, matches = ?, foulsWin = ?, foulsConceded = ?, yellowCards = ?, redCards = ?  WHERE id = ?"
-            cur.execute(query,(team_name,matches,fouls_win,fouls_conceded,yellow_cards,red_cards,  id))
+            cur.execute(query,(team_name,matches,fouls_won,fouls_conceded,yellow_cards,red_cards,  id))
             con.commit()
             cur.close()
         except:
