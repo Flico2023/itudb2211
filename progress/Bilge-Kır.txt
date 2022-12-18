@@ -5,3 +5,7 @@ There was a problem with the defence folder and I fixed it.
 I edited the server.py and form_classes.py file, added my own parts. 
 
 In summary, I did the my part's frontend.
+17.12.2022-18.12.2022
+I updated server.py, defence.html and discipline.html.
+I created edit_defence.html and edit_discipline.html files.
+Some errors came up and I fixed them.
