@@ -152,8 +152,8 @@ def add_attempts():
             cursor.execute("PRAGMA foreign_keys = ON")
             cursor.execute(query,(team_name,matches,attempts,attempts_on_target,attempts_off_target,attempts_blocked))
 
-            if cursor.lastrowid == 0:
-                return render_template("index.html")
+            #if cursor.lastrowid == 0:
+            #    return render_template("index.html")
 
             con.commit()  
 
@@ -345,8 +345,6 @@ def edit_attack(id):
 
 
 
-#if __name__ == "__main__":
-#    app.run(debug=True)
 
 
 
@@ -606,8 +604,6 @@ def add_defence():
             cursor.execute("PRAGMA foreign_keys = ON")
             cursor.execute(query,(team_name,saves_made,blocks,total_clearances,interceptions,recoveries,goals_conceded))
 
-            if cursor.lastrowid == 0:
-                return render_template("index.html")
 
             con.commit()  
 
