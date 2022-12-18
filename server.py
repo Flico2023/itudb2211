@@ -447,7 +447,7 @@ def delete_goal_type(id):
        cursor.execute("PRAGMA foreign_keys = ON")
        query = "DELETE FROM GOALTYPE WHERE id = ?" 
 
-       cursor.execute(query,(id))
+       cursor.execute(query,(id,))
 
        con.commit() 
 
@@ -462,7 +462,7 @@ def delete_goals(id):
        cursor.execute("PRAGMA foreign_keys = ON")
        query = "DELETE FROM GOALS WHERE id = ?" 
 
-       cursor.execute(query,(id))
+       cursor.execute(query,(id,))
 
        con.commit() 
    
@@ -480,7 +480,7 @@ def edit_goal_type(id):
             cur=con.cursor()
             cur.execute("PRAGMA foreign_keys = ON")
             query = "SELECT * FROM GOALTYPE WHERE (id = ?)"
-            cur.execute(query,(id))
+            cur.execute(query,(id,))
             row = cur.fetchone()
 
             updateForm.team_name.data = row["team"]
@@ -530,7 +530,7 @@ def edit_goals(id):
             cur=con.cursor()
             cur.execute("PRAGMA foreign_keys = ON")
             query = "SELECT * FROM GOALS WHERE (id = ?)"
-            cur.execute(query,(id))
+            cur.execute(query,(id,))
             row = cur.fetchone()
 
             updateForm.team_name.data = row["team"]
